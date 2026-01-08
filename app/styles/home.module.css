@@ -1,11 +1,12 @@
 .container {
-  max-width: var(--max-width);
+  max-width: 600px;
   margin: 0 auto;
   padding: 2rem;
 }
 
 .header {
   margin-bottom: 2rem;
+  text-align: center;
 }
 
 .header h1 {
@@ -14,9 +15,9 @@
 }
 
 .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
   margin-top: 2rem;
 }
 
@@ -34,7 +35,6 @@
 
 .card:hover {
   background: rgba(0, 0, 0, 0.04);
-  transform: translateY(-2px);
 }
 
 .card h3 {
@@ -47,4 +47,4 @@
   font-size: 0.9rem;
   opacity: 0.8;
   line-height: 1.6;
-} 
+}
