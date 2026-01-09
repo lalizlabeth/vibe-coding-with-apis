@@ -9,6 +9,11 @@ export default function Home() {
       title: 'Getting started',
       description: 'How to create a prototype',
       path: '/prototypes/example'
+    },
+    {
+      title: 'Skye',
+      description: 'Weather app with ethereal design',
+      path: '/prototypes/skye'
     }
     // Add your new prototypes here like this:
     // {

@@ -57,10 +57,10 @@ export default function ExamplePrototype() {
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!isDragging) return;
-    
+
     const dx = e.clientX - dragStart.current.x;
     const dy = e.clientY - dragStart.current.y;
-    
+
     setPosition({
       x: windowStart.current.x + dx,
       y: windowStart.current.y + dy
@@ -75,12 +75,12 @@ export default function ExamplePrototype() {
 
   return (
     <div className={`${styles.container} ${geist.className}`}
-         onMouseMove={handleMouseMove}
-         onMouseUp={handleMouseUp}
-         onMouseLeave={handleMouseUp}
-         style={{
-           background: `repeating-conic-gradient(${currentTheme.primary} 0% 25%, ${currentTheme.secondary} 0% 50%) 50% / 2px 2px`
-         }}>
+      onMouseMove={handleMouseMove}
+      onMouseUp={handleMouseUp}
+      onMouseLeave={handleMouseUp}
+      style={{
+        background: `repeating-conic-gradient(${currentTheme.primary} 0% 25%, ${currentTheme.secondary} 0% 50%) 50% / 2px 2px`
+      }}>
       <div className={styles.buttonContainer}>
         <Link href="/" className={styles.backButton} style={{
           backgroundColor: currentTheme.light,
@@ -104,17 +104,17 @@ export default function ExamplePrototype() {
         ))}
       </div>
       <div className={styles.window}
-           style={{
-             transform: `translate(${position.x}px, ${position.y}px)`,
-             cursor: isDragging ? 'grabbing' : 'auto'
-           }}>
+        style={{
+          transform: `translate(${position.x}px, ${position.y}px)`,
+          cursor: isDragging ? 'grabbing' : 'auto'
+        }}>
         <div className={styles.windowBar}
-             onMouseDown={handleMouseDown}
-             style={{ 
-               cursor: 'grab',
-               background: `linear-gradient(to bottom, ${currentTheme.light} 0%, ${currentTheme.light} 95%, ${currentTheme.primary} 100%)`,
-               borderColor: currentTheme.secondary
-             }}>
+          onMouseDown={handleMouseDown}
+          style={{
+            cursor: 'grab',
+            background: `linear-gradient(to bottom, ${currentTheme.light} 0%, ${currentTheme.light} 95%, ${currentTheme.primary} 100%)`,
+            borderColor: currentTheme.secondary
+          }}>
           <div className={styles.windowTitle} style={{ color: currentTheme.secondary }}>
             Example Prototype
           </div>
@@ -127,7 +127,7 @@ export default function ExamplePrototype() {
           <h1 className={styles.heading1} style={{ color: currentTheme.secondary }}>
             Welcome to example prototype
           </h1>
-          <div className={styles.section} style={{ 
+          <div className={styles.section} style={{
             borderColor: currentTheme.primary,
             backgroundColor: '#ffffff'
           }}>
@@ -139,18 +139,6 @@ export default function ExamplePrototype() {
               <li style={{ color: currentTheme.secondary }}>② Type: "Create a prototype for me"</li>
               <li style={{ color: currentTheme.secondary }}>③ Describe the key features you need</li>
               <li style={{ color: currentTheme.secondary }}>④ Share any design preferences</li>
-            </ol>
-          </div>
-          <div className={styles.section} style={{ 
-            borderColor: currentTheme.primary,
-            backgroundColor: '#ffffff'
-          }}>
-            <h2 className={styles.heading2} style={{ color: currentTheme.secondary }}>
-              Things to know
-            </h2>
-            <ol className={styles.list}>
-              <li style={{ color: currentTheme.secondary }}>◇ Use shared components from components folder</li>
-              <li style={{ color: currentTheme.secondary }}>◇ Use shared styles from styles folder</li>
             </ol>
           </div>
         </div>
