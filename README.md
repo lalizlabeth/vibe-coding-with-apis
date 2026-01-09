@@ -1,6 +1,6 @@
-# Prototyping with Cursor
+# Vibe Coding with APIs
 
-This is your personal prototyping workspace for the "Prototyping with Cursor" class. Here you can create and organize all your interaction design prototypes using Next.js.
+This is your workspace for the "Vibe Coding with APIs" workshop. Here you can create and organize all your interaction design prototypes using Next.js.
 
 ## Getting started
 
@@ -80,48 +80,4 @@ public/
     shared/              # Shared images used across prototypes
         icons/
         common/
-```
-
-## Adding a new component
-
-When asking the Agent to create a new component, use this format:
-
-```
-Create a new component named <name> with these specifications:
-1. Purpose: [Describe what the component does]
-2. Props: [List the props the component should accept]
-3. Variants: [List any visual variants needed]
-4. States: [List any states like hover, disabled, loading, etc.]
-5. Styling: [Describe any specific styling requirements]
-6. Behavior: [Describe any interactive behavior]
-7. Accessibility: [List any accessibility requirements]
-```
-
-Example request:
-```
-Create a new component named Input with these specifications:
-1. Purpose: A text input field for forms
-2. Props:
-   - label: string
-   - placeholder: string
-   - error?: string
-   - type?: 'text' | 'password' | 'email'
-3. Variants:
-   - Default
-   - With error
-4. States:
-   - Default
-   - Focus
-   - Disabled
-   - Error
-5. Styling:
-   - Modern minimal design
-   - Subtle border that highlights on focus
-   - Error state should show red border
-6. Behavior:
-   - Show error message below input when error prop is provided
-   - Password type should have a show/hide password toggle
-7. Accessibility:
-   - Label should be properly associated with input
-   - Error messages should be announced by screen readers
 ```
