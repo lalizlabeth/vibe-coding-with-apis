@@ -375,6 +375,43 @@ export default function SkyeWeatherApp() {
         city.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
+    // Handle search submission (for any city in the world)
+    const handleSearchSubmit = async () => {
+        if (!searchQuery.trim()) return;
+
+        const cityToSearch = searchQuery.trim();
+        setShowCityList(false);
+        setIsTransitioning(true);
+
+        try {
+            setIsLoading(true);
+            const response = await fetch(`/api/weather?city=${encodeURIComponent(cityToSearch)}`);
+
+            if (response.ok) {
+                const data = await response.json();
+                // Add the new city to weatherData using the location name from API
+                const cityName = data.location || cityToSearch;
+                setWeatherData(prev => ({
+                    ...prev,
+                    [cityName]: data
+                }));
+                setSelectedCity(cityName);
+                setSearchQuery("");
+                setIsUsingAPI(true);
+            } else {
+                // City not found - could show an error message
+                console.log('City not found');
+            }
+        } catch (error) {
+            console.log('Failed to fetch weather data');
+        } finally {
+            setIsLoading(false);
+            setTimeout(() => {
+                setIsTransitioning(false);
+            }, 50);
+        }
+    };
+
     // Fetch weather data from API
     const fetchWeatherData = async (city: string) => {
         try {
@@ -463,9 +500,16 @@ export default function SkyeWeatherApp() {
                                 setShowCityList(true);
                             }}
                             onFocus={() => setShowCityList(true)}
+                            onKeyDown={(e) => {
+                                if (e.key === 'Enter') {
+                                    e.preventDefault();
+                                    handleSearchSubmit();
+                                }
+                            }}
                         />
-                        {showCityList && searchQuery && filteredCities.length > 0 && (
+                        {showCityList && searchQuery && (
                             <div className={styles.cityList}>
+                                {/* Show matching existing cities */}
                                 {filteredCities.map((city) => (
                                     <button
                                         key={city}
@@ -478,6 +522,17 @@ export default function SkyeWeatherApp() {
                                         {city}
                                     </button>
                                 ))}
+                                {/* Always show option to search for the typed city */}
+                                <button
+                                    className={styles.cityButton}
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        handleSearchSubmit();
+                                    }}
+                                    style={{ borderTop: filteredCities.length > 0 ? '1px solid rgba(255,255,255,0.2)' : 'none' }}
+                                >
+                                    Search for &quot;{searchQuery}&quot;
+                                </button>
                             </div>
                         )}
                     </div>
