@@ -410,10 +410,8 @@ export default function SkyeWeatherApp() {
             setSearchQuery("");
             setShowCityList(false);
 
-            // Fetch fresh data from API if available
-            if (isUsingAPI || !weatherData[city]) {
-                fetchWeatherData(city);
-            }
+            // Always try to fetch fresh data from API
+            fetchWeatherData(city);
 
             setTimeout(() => {
                 setIsTransitioning(false);
@@ -490,7 +488,7 @@ export default function SkyeWeatherApp() {
                             <button
                                 key={city}
                                 className={`${styles.cityPill} ${selectedCity === city ? styles.cityPillActive : ''}`}
-                                onClick={() => setSelectedCity(city)}
+                                onClick={() => handleCitySelect(city)}
                             >
                                 {city}
                             </button>
